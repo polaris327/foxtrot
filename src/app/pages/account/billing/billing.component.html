@@ -1,0 +1,20 @@
+<div class="billing-page">
+  <div class="tabs d-flex align-items-center">
+    <a class="tab overview" [class.active]="billingSerivce.selectedTab == 'overview'" routerLink="overview" l10nTranslate>
+      common_text_overview
+    </a>
+    <a class="tab payment-methods" [class.active]="billingSerivce.selectedTab == 'payment-methods'" routerLink="payment-methods" l10nTranslate>
+      common_text_payment_methods
+    </a>
+    <a class="tab contact" [class.active]="billingSerivce.selectedTab == 'contact'" routerLink="contact" l10nTranslate>
+      common_text_contact
+    </a>
+    <a class="tab history" [class.active]="billingSerivce.selectedTab == 'history'" routerLink="history" l10nTranslate>
+      common_text_history
+    </a>
+
+    <button class="btn btn-purchase ml-auto text-uppercase" l10nTranslate>inventory_purchase_credits</button>
+  </div>
+
+  <router-outlet></router-outlet>
+</div>

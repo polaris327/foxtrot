@@ -1,0 +1,46 @@
+@import '../../../variables';
+
+$light-dark-gray: #b7b7b7;
+
+.account-page {
+  > .page-title {
+    font-family: "proxima_novabold", Arial, sans-serif;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 1;
+    background-color: $very-dark-gray;
+    color: $white;
+    padding: 10px;
+    margin-bottom: 40px;
+  }
+
+  > .tabs {
+    .tab {
+      flex: 1;
+      text-align: center;
+      padding: 13px;
+      color: white;
+      font-family: "proxima_novabold", Arial, sans-serif;
+      font-weight: normal;
+      font-size: 20px;
+      text-decoration: none;
+      line-height: 1.2;
+
+      &.settings {
+        background-color: $light-dark-gray;
+      }
+
+      &.billing {
+        background-color: $medium-blue;
+      }
+
+      &.members {
+        background-color: $medium-gray;
+      }
+
+      &.usage {
+        background-color: $light-dark-gray;
+      }
+    }
+  }
+}

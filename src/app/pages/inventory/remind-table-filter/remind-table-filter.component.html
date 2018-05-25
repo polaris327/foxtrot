@@ -1,0 +1,33 @@
+<div class="sidebar-body">
+  <div class="reset-button">
+    <button class="btn btn-reset text-uppercase" (click)="resetFilter()" l10nTranslate>inventory_reset_filter_text</button>
+  </div>
+  <div class="members-filter">
+    <label class="filter-label" l10nTranslate>directory_filter_members_text</label>
+    <label class="custom-radio-button">
+      <input type="radio" name="memberFilter" [(ngModel)]="filter.members" [value]="0" />
+      <span></span>
+      <a class="radio-button-text" l10nTranslate>directory_filter_invited_by_me_text</a>
+    </label>
+    <label class="custom-radio-button">
+      <input type="radio" name="memberFilter" [(ngModel)]="filter.members" [value]="1" />
+      <span></span>
+      <a class="radio-button-text" l10nTranslate>directory_filter_all_members_text</a>
+    </label>
+  </div>
+  <div class="labels-filter">
+    <label class="filter-label" l10nTranslate>directory_filter_labels_text</label>
+    <div class="position-relative">
+      <button class="btn btn-labels-dropdown d-flex just-content-between align-items-center" (click)="toggleDropdownLabels($event)">
+        <span class="flex-1 text-left" *ngIf="!filter.labels" l10nTranslate>directory_filter_select_labels_text</span>
+        <span class="flex-1 text-left" *ngIf="filter.labels">{{ filter.labels }}</span>
+        <div><img src="assets/images/icons/dropdown-active-white.svg" /></div>
+      </button>
+      <div class="d-flex flex-column labels-list" *ngIf="dropdownLabelsOpened" (document:click)="dropdownLabelsOpened = false">
+        <a *ngFor="let filter of filters; trackBy: commonService.trackStringItem" (click)="changeLabelFilter(filter.value)">
+          {{ filter.value }}
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

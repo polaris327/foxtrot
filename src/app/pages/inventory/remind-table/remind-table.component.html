@@ -1,0 +1,70 @@
+<div class="remind-table">
+  <div class="table-header d-flex">
+    <div class="check">
+      <label class="custom-checkbox">
+        <input type="checkbox" id="selectAll" [(ngModel)]="allChecked" />
+        <span></span>
+      </label>
+      <span l10nTranslate>teams_select_all</span>
+    </div>
+    <div class="names flex-1" [class.dec-sort]="nameSort" (click)="toggleNameSort()">
+      <span l10nTranslate>common_text_names</span>
+      <img src="assets/images/icons/dropdown-active.svg" />
+    </div>
+    <div class="email flex-2" *ngIf="!hideEmail" l10nTranslate>common_text_email</div>
+    <div class="invite-status" l10nTranslate>inventory_invite_status</div>
+    <div class="actions"></div>
+  </div>
+  <div class="table-body">
+    <div class="table-row d-flex" *ngFor="let row of rows; index as idx; trackBy: commonService.trackStringItem">
+      <div class="check">
+        <label class="custom-checkbox">
+          <input type="checkbox" [(ngModel)]="checked[idx]" />
+          <span></span>
+        </label>
+        <div class="avatar d-flex align-items-center justify-content-center">
+          <img *ngIf="row.avatar" [src]="row.avatar" />
+          <span *ngIf="!row.avatar">{{ row.name.firstName[0] }}{{ row.name.lastName[0] }}</span>
+        </div>
+      </div>
+      <div class="names flex-1">
+        {{ row.name.firstName }} {{ row.name.lastName }}
+      </div>
+      <div class="email flex-2" *ngIf="!hideEmail">
+        {{ row.email }}
+      </div>
+      <div class="invite-status flex-column align-items-start justify-content-center">
+        <div class="invited-date">
+          <span l10nTranslate>inventory_text_invited</span>: {{ row.status.invited | date: 'd MMM. y' }}
+        </div>
+        <div class="invite-reminder" *ngFor="let reminder of row.status.reminders">
+          <span l10nTranslate>inventory_text_invite_reminder</span>: {{ reminder | date: 'd MMM. y' }}
+        </div>
+        <a class="text-uppercase" l10nTranslate>inventory_text_remind</a>
+      </div>
+      <div class="actions position-relative">
+        <div class="btn-popup"
+          [ngbPopover]="popContent"
+          [placement]="'bottom'"
+          #p="ngbPopover"
+          (document:click)="p.close()"
+          (click)="$event.stopPropagation()"
+        >
+          <img src="assets/images/icons/settings-gray.svg" />
+        </div>
+        <ng-template #popContent>
+          <div class="actions-dropdown d-flex flex-column">
+            <a class="d-flex align-items-end">
+              <span l10nTranslate>inventory_withdrawal_invitation</span>
+              <img class="question-mark ml-auto" src="assets/images/icons/faq-gray.svg" />
+            </a>
+            <a l10nTranslate>train_copy_code_link</a>
+            <a l10nTranslate>train_copy_code_mark_sent</a>
+            <a l10nTranslate>inventory_copy_email_code_link</a>
+            <a l10nTranslate>inventory_copy_email_mark_sent</a>
+          </div>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+</div>

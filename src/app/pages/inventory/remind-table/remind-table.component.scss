@@ -1,0 +1,228 @@
+@import '../../../../variables';
+
+@mixin label-checkbox-style($checked-bg-color, $border-color, $size) {
+  visibility: hidden;
+  position: absolute;
+  height: $size;
+  width: $size;
+
+  &:checked + span {
+    background-color: $checked-bg-color;
+    border-color: $border-color;
+  }
+
+  &:checked + span:after {
+    opacity: 1;
+  }
+
+  + span {
+    background-color: $white;
+    border: 1px solid $border-color;
+    border-radius: 25%;
+    cursor: pointer;
+    height: $size;
+    width: $size;
+    margin-bottom: 0;
+    display: inline-block;
+    position: relative;
+    margin-right: 10px;
+
+    &:after {
+      border: $size / 10 solid $white;
+      border-top: none;
+      border-right: none;
+      content: "";
+      height: $size / 4;
+      left: $size / 5;
+      opacity: 0;
+      position: absolute;
+      top: $size / 4;
+      transform: rotate(-45deg);
+      width: $size / 2;
+    }
+
+    + * {
+      flex: 1;
+      line-height: 1.4;
+    }
+  }
+}
+
+@mixin app-label-checkbox($checked-bg-color, $border-color, $size: 22px) {
+  position: relative;
+  margin: 0;
+  display: flex;
+  cursor: pointer;
+
+  input[type='checkbox'] {
+    @include label-checkbox-style($checked-bg-color, $border-color, $size);
+  }
+
+  input[type='radio'] {
+    @include label-checkbox-style($checked-bg-color, $border-color, $size);
+
+    + span {
+      border-radius: 50%;
+    }
+  }
+}
+
+.custom-checkbox {
+  @include app-label-checkbox($very-dark-gray, $dark-gray);
+}
+
+.custom-radio-button {
+  @include app-label-checkbox($very-dark-gray, $dark-gray, 12px);
+}
+
+.flex-1 {
+  flex: 1;
+}
+
+.flex-2 {
+  flex: 2;
+}
+
+.popover {
+  &.bs-popover-bottom {
+    left: unset !important;
+    right: 10px;
+
+    .arrow {
+      left: unset !important;
+      right: 10px;
+    }
+
+    .popover-body {
+      padding: 0;
+    }
+  }
+}
+
+.remind-table {
+  .table-header {
+    border-bottom: solid 1px $border-gray;
+    padding-left: 12px;
+    background: $almost-white;
+    min-height: 54px;
+
+    > div {
+      padding: 12px;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+
+      &.check {
+        width: 108px;
+        font-size: 12px;
+        font-weight: normal;
+      }
+
+      &.names {
+        cursor: pointer;
+        font-family: "proxima_novabold", Arial, sans-serif;
+
+        img {
+          transition: transform ease .2s;
+          width: 12px;
+          height: 12px;
+          margin-left: 4px;
+        }
+
+        &.dec-sort {
+          img {
+            transform: rotate(180deg);
+          }
+        }
+      }
+
+      &.email {
+        font-family: "proxima_novabold", Arial, sans-serif;
+      }
+
+      &.invite-status {
+        width: 250px;
+        font-family: "proxima_novabold", Arial, sans-serif;
+      }
+
+      &.actions {
+        width: 56px;
+      }
+    }
+  }
+
+  .table-body {
+    .table-row {
+      border-bottom: solid 1px $border-gray;
+      min-height: 80px;
+      padding-left: 12px;
+
+      > div {
+        padding: 12px;
+        display: flex;
+        align-items: center;
+
+        &.check {
+          width: 108px;
+          font-size: 18px;
+
+          .avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: $medium-blue;
+            color: $white;
+            margin-left: 4px;
+          }
+        }
+
+        &.names {
+          font-weight: 600;
+          word-break: break-all;
+        }
+
+        &.email {
+          word-break: break-all;
+        }
+
+        &.invite-status {
+          width: 250px;
+
+          a {
+            font-weight: 600;
+            color: $medium-blue;
+            border-bottom: 2px solid $medium-blue;
+            line-height: 1;
+          }
+        }
+
+        &.actions {
+          width: 56px;
+
+          .actions-dropdown {
+            width: 270px;
+
+            a {
+              padding: 6px 12px;
+              font-size: 13px;
+              cursor: pointer;
+
+              &:hover {
+                color: $alert-info-background-color;
+                background-color: $extra-light-gray;
+              }
+
+              .question-mark {
+                width: 17px;
+              }
+            }
+          }
+
+          .btn-popup {
+            cursor: pointer;
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,26 @@
+<div class="filters d-flex align-items-center">
+  <div class="action">
+    <img [src]="filterIconUrl" (click)="toggleSidebar()" />
+    <a class="action-text" l10nTranslate>common_text_filter</a>
+  </div>
+
+  <div class="search-input d-flex justify-content-center flex-1">
+    <div class="search-container">
+      <input class="search-input form-control" [placeholder]="reminderText" [(ngModel)]="tableData.filter.names" />
+      <img class="icon" src="/assets/images/icons/search-gray.svg" />
+    </div>
+  </div>
+
+  <div class="reminder-button">
+    <button class="btn" l10nTranslate>inventory_draft_reminder</button>
+  </div>
+</div>
+
+<div class="reminder-container d-flex">
+  <div class="filter-sidebar" [class.opened]="sidebarOpened">
+    <app-remind-table-filter [filter]="tableData.filter"></app-remind-table-filter>
+  </div>
+  <div class="reminder-table flex-1">
+    <app-remind-table [data]="tableData" [hideEmail]="sidebarOpened"></app-remind-table>
+  </div>
+</div>

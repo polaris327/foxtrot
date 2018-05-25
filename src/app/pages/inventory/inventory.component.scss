@@ -1,0 +1,70 @@
+@import '../../../variables';
+@import '../../../mixins';
+
+.search-container {
+  position: relative;
+
+  input {
+    padding-right: 30px;
+    height: 34px;
+
+    &::placeholder {
+      color: $medium-gray;
+      font-weight: 300;
+    }
+  }
+
+  .icon {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 18px;
+  }
+}
+
+.filters {
+  background-color: $very-dark-gray;
+  padding: 12px;
+
+  .action {
+    color: $white;
+    font-size: 14px;
+    font-weight: 600;
+
+    img {
+      width: 22px;
+      margin: 0 5px 0 10px;
+      cursor: pointer;
+    }
+  }
+
+  .reminder-button {
+    margin-left: 44px;
+
+    button {
+      @include app-button(140px, 32px, 12px, 3px, $medium-blue);
+    }
+  }
+
+  .search-input {
+    margin-left: 44px;
+
+    .search-container {
+      input {
+        width: 368px;
+      }
+    }
+  }
+}
+
+.reminder-container {
+  .filter-sidebar {
+    max-width: 0;
+    overflow: hidden;
+    transition: max-width ease .5s;
+
+    &.opened {
+      max-width: 175px;
+    }
+  }
+}

@@ -1,0 +1,77 @@
+@import '../../../../variables';
+@import '../../../../mixins';
+
+.sidebar-body {
+  width: 175px;
+  padding: 0 23px;
+
+  > div {
+    padding: 13px 0;
+    border-bottom: 1px solid $extra-light-gray;
+
+    &.members-filter {
+      label {
+        margin-bottom: 12px;
+      }
+    }
+
+    .filter-label {
+      font-size: 12px;
+      font-family: "proxima_novabold", Arial, sans-serif;
+    }
+
+    .radio-button-text {
+      font-size: 10px;
+    }
+
+    &.reset-button {
+      .btn-reset {
+        @include app-button(100%, 30px, 11px, 3px, white);
+        color: inherit;
+        border-color: $body-text-color;
+      }
+    }
+
+    &.labels-filter {
+      .btn-labels-dropdown {
+        @include app-button(100%, 22px, 10px, 4px, $body-text-color);
+        padding: 0;
+        line-height: 1;
+
+        span {
+          padding: 5px 5px 4px;
+        }
+
+        div {
+          padding: 4px 5px;
+          border-left: 1px solid #111;
+
+          img {
+            width: 10px;
+            height: 10px;
+          }
+        }
+      }
+
+      .labels-list {
+        border: 1px solid $extra-light-gray;
+        border-radius: 4px;
+        margin-top: 2px;
+        position: absolute;
+        width: 130px;
+        background: white;
+
+        a {
+          padding: 4px 8px;
+          font-size: 10px;
+
+          &:hover {
+            color: $alert-info-background-color;
+            background-color: $extra-light-gray;
+            cursor: pointer;
+          }
+        }
+      }
+    }
+  }
+}
